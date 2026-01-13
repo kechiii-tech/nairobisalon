@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Gallery | Nairobi Premier Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .gallery-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .gallery-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .gallery-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .gallery-section {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+        }
+        
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid var(--primary-bronze);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: var(--neutral-gray);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-bronze);
+            color: white;
+            border-color: var(--primary-bronze);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 320px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-category {
+            display: inline-block;
+            background: var(--primary-bronze);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stylist-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .stylists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stylist-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stylist-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stylist-image {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .stylist-info {
+            padding: 25px;
+        }
+        
+        .stylist-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--neutral-gray);
+        }
+        
+        .stylist-title {
+            color: var(--primary-bronze);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .stylist-expertise {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .stylist-rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .rating-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+        
+        .african-beauty-section {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.05) 0%, rgba(196, 30, 58, 0.05) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .african-beauty-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .african-beauty-icon {
+            font-size: 3.5rem;
+            color: var(--primary-bronze);
+            margin-bottom: 20px;
+        }
+        
+        .gallery-cta {
+            background: var(--neutral-gray);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .gallery-cta h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .stylists-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-filter {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Nairobi<span>Premier</span></div>
+            </div>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+                </ul>
+            </nav>
+            
+            <a href="tel:+254117702463" class="btn btn-primary">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>African Beauty Gallery</h1>
+            <p>Celebrating the unique beauty and diversity of African hair, skin, and style. See real transformations from our Nairobi clients.</p>
+            
+            <div class="contact-options">
+                <a href="https://wa.me/254117702463?text=Hello!%20I%20saw%20your%20gallery%20and%20would%20like%20to%20book%20a%20similar%20service" 
+                   class="contact-option" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Book Similar Service</span>
+                </a>
+                
+                <a href="tel:+254117702463" class="contact-option">
+                    <i class="fas fa-phone"></i>
+                    <span>Call: +254 117 702463</span>
+                </a>
+                
+                <a href="booking.html" class="contact-option">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Book Appointment</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beauty Gallery -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Beauty Transformations</h2>
+                <p>Real results from our diverse Nairobi clientele</p>
+            </div>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All Beauty Styles</button>
+                <button class="filter-btn" data-filter="hair">African Hair</button>
+                <button class="filter-btn" data-filter="nails">Nail Art</button>
+                <button class="filter-btn" data-filter="bridal">Bridal & Events</button>
+                <button class="filter-btn" data-filter="spa">Spa & Wellness</button>
+                <button class="filter-btn" data-filter="natural">Natural Hair</button>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded via JavaScript -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="color: #666; margin-bottom: 20px; font-size: 1.1rem;">
+                    <i class="fas fa-heart" style="color: var(--secondary-red); margin-right: 8px;"></i>
+                    Want to be featured in our gallery? Book a service and share your transformation!
+                </p>
+                <a href="booking.html" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">
+                    <i class="fas fa-magic"></i> Book Your Transformation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- African Beauty Philosophy -->
+    <section class="african-beauty-section">
+        <div class="container">
+            <div class="african-beauty-content">
+                <div class="african-beauty-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h2 style="color: var(--neutral-gray); margin-bottom: 20px;">Celebrating African Beauty</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                    At Nairobi Premier Salon, we celebrate the natural beauty of African hair and skin. Our expert stylists specialize in techniques that enhance and protect your natural features, from intricate braiding patterns to skin-enhancing treatments that work with melanin-rich skin.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #555;">
+                    We believe every curl, coil, and kink tells a story, and we're here to help you write yours beautifully.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Stylists -->
+    <section class="stylist-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Expert African Stylists</h2>
+                <p>Professionals who understand and celebrate African beauty</p>
+            </div>
+            
+            <div class="stylists-grid" id="stylistGrid">
+                <!-- Stylists loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery CTA -->
+    <section class="gallery-cta">
+        <div class="container">
+            <h2>Ready for Your Beauty Transformation?</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.2rem;">
+                Let our expert stylists help you discover and enhance your unique beauty. Book your appointment today and join our gallery of satisfied Nairobi clients.
+            </p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="booking.html" class="btn btn-primary" style="padding: 15px 40px;">
+                    <i class="fas fa-calendar-check"></i> Book Online
+                </a>
+                
+                <a href="https://wa.me/254117702463?text=Hello!%20I'd%20like%20to%20book%20an%20appointment%20for%20a%20beauty%20service" 
+                   class="btn" style="padding: 15px 40px; background: #25D366; color: white;" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                </a>
+                
+                <a href="tel:+254117702463" class="btn" style="padding: 15px 40px; background: white; color: var(--primary-bronze);">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Nairobi Premier Salon</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Celebrating African beauty in the heart of Nairobi. Where tradition meets modern elegance.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/254117702463" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Locations</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Westlands: ABC Place</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Kilimani: Dennis Pritt Road</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Karen: Karen Crossroads</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> CBD: Kimathi Street</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services & Pricing</a></li>
+                        <li><a href="gallery.html">Beauty Gallery</a></li>
+                        <li><a href="booking.html">Book Appointment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone" style="margin-right: 8px; color: var(--primary-bronze);"></i> +254 117 702463</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 8px; color: var(--primary-bronze);"></i> info@nairobipremiersalon.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 8px; color: var(--primary-bronze);"></i> Mon-Sat: 9AM - 8PM, Sun: 10AM - 6PM</li>
+                        <li><i class="fab fa-whatsapp" style="margin-right: 8px; color: var(--primary-bronze);"></i> WhatsApp: +254 117 702463</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Nairobi Premier Salon. All rights reserved. | Celebrating African Beauty in Nairobi</p>
+                <p style="margin-top: 10px;">Proudly serving Nairobi's diverse community since 2015</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 90%; max-height: 90vh; background: transparent; box-shadow: none; position: relative;">
+            <button class="modal-close" onclick="closeLightbox()" style="position: absolute; top: -50px; right: 0; background: rgba(0,0,0,0.7); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; z-index: 1001;">&times;</button>
+            
+            <div style="position: relative; width: 100%; height: 80vh;">
+                <img id="lightboxImage" src="" alt="" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
+                
+                <div id="lightboxCaption" style="color: white; text-align: center; margin-top: 15px; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px;">
+                    <!-- Caption will be inserted here -->
+                </div>
+                
+                <button id="prevBtn" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <button id="nextBtn" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Gallery Data with Black/African beauty photos
+        const galleryItems = [
+            {
+                id: 1,
+                image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2083&q=80",
+                title: "Box Braids Transformation",
+                category: "hair",
+                description: "Beautiful box braids on natural African hair - 4 hour service"
+            },
+            {
+                id: 2,
+                image: "https://images.unsplash.com/photo-1621184455862-c637df0d1d84?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80",
+                title: "Elegant Cornrows",
+                category: "hair",
+                description: "Intricate cornrow design with beads - Traditional African styling"
+            },
+            {
+                id: 3,
+                image: "https://images.unsplash.com/photo-1534296262249-d7f4c5e2299c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                title: "African Nail Art",
+                category: "nails",
+                description: "Beautiful nail art with African-inspired patterns - Gel polish"
+            },
+            {
+                id: 4,
+                image: "https://images.unsplash.com/photo-1579082947491-e4c8e5c86968?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                title: "Spa Facial for Melanin Skin",
+                category: "spa",
+                description: "Specialized facial treatment for melanin-rich skin"
+            },
+            {
+                id: 5,
+                image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+                title: "African Bridal Makeup",
+                category: "bridal",
+                description: "Traditional Kenyan bridal makeup with natural glow"
+            },
+            {
+                id: 6,
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80",
+                title: "Vibrant Hair Coloring",
+                category: "hair",
+                description: "Bold hair color on natural African hair - Nairobi fashion week"
+            },
+            {
+                id: 7,
+                image: "https://images.unsplash.com/photo-1519415711931-702deacf5be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                title: "Gel Manicure with African Patterns",
+                category: "nails",
+                description: "Long-lasting gel manicure with Maasai-inspired designs"
+            },
+            {
+                id: 8,
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=2035&q=80",
+                title: "Therapeutic African Massage",
+                category: "spa",
+                description: "Traditional African massage techniques for relaxation"
+            },
+            {
+                id: 9,
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1976&q=80",
+                title: "Natural Hair Styling",
+                category: "natural",
+                description: "Beautiful twist-out on natural African hair"
+            },
+            {
+                id: 10,
+                image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80",
+                title: "African Beauty Makeup",
+                category: "bridal",
+                description: "Makeup that enhances natural African features"
+            },
+            {
+                id: 11,
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80",
+                title: "Locs Maintenance",
+                category: "hair",
+                description: "Professional dreadlocks maintenance and styling"
+            },
+            {
+                id: 12,
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80",
+                title: "African Skin Care",
+                category: "spa",
+                description: "Specialized skin treatment for hyperpigmentation"
+            }
+        ];
+        
+        // Stylist Data with Black professionals
+        const stylists = [
+            {
+                id: 1,
+                name: "Grace Mwende",
+                role: "Senior Hair Stylist & Braiding Expert",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+                expertise: "Braiding, Natural Hair Care, Weaving",
+                experience: "8 years",
+                rating: 4.8,
+                reviews: 120,
+                specialties: ["Box Braids", "Cornrows", "Natural Hair"]
+            },
+            {
+                id: 2,
+                name: "David Kamau",
+                role: "Master Barber & Grooming Specialist",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+                expertise: "Men's Grooming, Beard Design, Haircuts",
+                experience: "6 years",
+                rating: 4.9,
+                reviews: 95,
+                specialties: ["Fade Cuts", "Beard Styling", "Traditional Shaves"]
+            },
+            {
+                id: 3,
+                name: "Amina Hassan",
+                role: "Nail Art & Beauty Specialist",
+                image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+                expertise: "Nail Art, Gel Extensions, African-inspired Designs",
+                experience: "5 years",
+                rating: 5.0,
+                reviews: 67,
+                specialties: ["African Nail Art", "Gel Manicures", "Spa Pedicures"]
+            },
+            {
+                id: 4,
+                name: "Sophie Akinyi",
+                role: "Skin Care & Spa Therapist",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+                expertise: "Melanin Skin Care, Facials, Body Treatments",
+                experience: "7 years",
+                rating: 4.7,
+                reviews: 89,
+                specialties: ["Hyperpigmentation", "African Skin Care", "Therapeutic Massage"]
+            }
+        ];
+        
+        let currentImageIndex = 0;
+        
+        // Load Gallery Items
+        function loadGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+            
+            galleryItems.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.setAttribute('data-category', item.category);
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="gallery-img" 
+                         onclick="openLightbox(${index})">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">${item.category}</span>
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+            });
+        }
+        
+        // Load Stylists
+        function loadStylists() {
+            const stylistGrid = document.getElementById('stylistGrid');
+            stylistGrid.innerHTML = '';
+            
+            stylists.forEach(stylist => {
+                const stylistCard = document.createElement('div');
+                stylistCard.className = 'stylist-card';
+                stylistCard.innerHTML = `
+                    <img src="${stylist.image}" alt="${stylist.name}" class="stylist-image">
+                    <div class="stylist-info">
+                        <h3 class="stylist-name">${stylist.name}</h3>
+                        <div class="stylist-title">${stylist.role}</div>
+                        <div class="stylist-expertise">${stylist.expertise}</div>
+                        <div class="stylist-rating">
+                            ${generateStarRating(stylist.rating)}
+                            <span class="rating-text">${stylist.rating} (${stylist.reviews} reviews)</span>
+                        </div>
+                        <a href="booking.html" class="btn btn-secondary" style="margin-top: 10px;">
+                            <i class="fas fa-calendar-check"></i> Book with ${stylist.name.split(' ')[0]}
+                        </a>
+                    </div>
+                `;
+                stylistGrid.appendChild(stylistCard);
+            });
+        }
+        
+        // Generate star rating
+        function generateStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+        
+        // Initialize Gallery Filtering
+        function initGalleryFilter() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    const galleryItems = document.querySelectorAll('.gallery-item');
+                    
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.9)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Lightbox Functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const item = galleryItems[index];
+            
+            document.getElementById('lightboxImage').src = item.image;
+            document.getElementById('lightboxCaption').innerHTML = `
+                <h4 style="margin-bottom: 5px; color: white;">${item.title}</h4>
+                <p style="margin-bottom: 5px;">${item.description}</p>
+                <span class="gallery-category" style="font-size: 0.8rem;">${item.category}</span>
+            `;
+            
+            document.getElementById('lightboxModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Update button visibility
+            updateLightboxButtons();
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            const item = galleryItems[currentImageIndex];
+            
+            document.getElementById('lightboxImage').src = item.image;
+            document.getElementById('lightboxCaption').innerHTML = `
+                <h4 style="margin-bottom: 5px; color: white;">${item.title}</h4>
+                <p style="margin-bottom: 5px;">${item.description}</p>
+                <span class="gallery-category" style="font-size: 0.8rem;">${item.category}</span>
+            `;
+            
+            updateLightboxButtons();
+        }
+        
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            const item = galleryItems[currentImageIndex];
+            
+            document.getElementById('lightboxImage').src = item.image;
+            document.getElementById('lightboxCaption').innerHTML = `
+                <h4 style="margin-bottom: 5px; color: white;">${item.title}</h4>
+                <p style="margin-bottom: 5px;">${item.description}</p>
+                <span class="gallery-category" style="font-size: 0.8rem;">${item.category}</span>
+            `;
+            
+            updateLightboxButtons();
+        }
+        
+        function updateLightboxButtons() {
+            // You can add logic to hide/show buttons if needed
+        }
+        
+        // Close lightbox when clicking outside
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target === this || e.target.classList.contains('modal-close')) {
+                closeLightbox();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightboxModal');
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
+            }
+        });
+        
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadGallery();
+            loadStylists();
+            initGalleryFilter();
+            
+            // Add event listeners for lightbox navigation buttons
+            document.getElementById('nextBtn').addEventListener('click', nextImage);
+            document.getElementById('prevBtn').addEventListener('click', prevImage);
+            
+            // Initialize mobile menu (from main.js)
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                });
+                
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    });
+                });
+            }
+        });
+        
+        // Add to global scope for lightbox buttons
+        window.openLightbox = openLightbox;
+        window.closeLightbox = closeLightbox;
+        window.nextImage = nextImage;
+        window.prevImage = prevImage;
+    </script>
+</body>
+</html>

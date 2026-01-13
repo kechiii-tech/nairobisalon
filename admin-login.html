@@ -1,0 +1,236 @@
+<!-- admin-login.html - Updated Version -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Nairobi Premier Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.1) 0%, rgba(28, 144, 255, 0.1) 100%);
+            padding: 20px;
+        }
+        
+        .login-box {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .login-box h2 {
+            color: var(--primary-bronze);
+            margin-bottom: 10px;
+        }
+        
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .login-form .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--neutral-gray);
+        }
+        
+        .login-form .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, var(--primary-bronze), var(--secondary-red));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(205, 127, 50, 0.3);
+        }
+        
+        .login-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(205, 127, 50, 0.4);
+        }
+        
+        .login-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            margin-top: 15px;
+            display: none;
+            background: #f8d7da;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .security-notice {
+            background: #fff3cd;
+            color: #856404;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        
+        .demo-credentials {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .login-attempts {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .lockout-warning {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div id="lockoutWarning" class="lockout-warning" style="display: none;">
+                <i class="fas fa-lock"></i>
+                <span id="lockoutMessage">Account is temporarily locked. Please try again later.</span>
+            </div>
+            
+            <div class="login-attempts" id="loginAttemptsDisplay">
+                <i class="fas fa-shield-alt"></i> Secure Login
+            </div>
+            
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <div class="logo-text">Nairobi<span>Premier</span></div>
+            </div>
+            
+            <h2>Admin Dashboard Login</h2>
+            <p>Enter your credentials to access the admin panel</p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" required autocomplete="username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginButton">
+                    <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                </button>
+                
+                <div class="error-message" id="errorMessage">
+                    <!-- Error message will be inserted here -->
+                </div>
+            </form>
+            
+            <div class="security-notice">
+                <i class="fas fa-info-circle"></i>
+                <strong>Security Notice:</strong> This is a secure admin area. All login attempts are logged.
+            </div>
+            
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Main Site</a>
+            
+            <div class="demo-credentials" id="demoCredentials">
+                <p><strong>Contact Site Administrator:</strong></p>
+                <p>For access credentials, please contact:</p>
+                <p><i class="fas fa-phone"></i> +254 117 702463</p>
+                <p><i class="fab fa-whatsapp"></i> +254 117 702463</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Hide demo credentials after 30 seconds
+        setTimeout(() => {
+            const demoCreds = document.getElementById('demoCredentials');
+            if (demoCreds) {
+                demoCreds.style.opacity = '0.5';
+                demoCreds.style.fontSize = '0.8rem';
+            }
+        }, 30000);
+        
+        // Check lockout status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const lockoutUntil = localStorage.getItem('lockoutUntil');
+            if (lockoutUntil && Date.now() < parseInt(lockoutUntil)) {
+                const remainingTime = Math.ceil((parseInt(lockoutUntil) - Date.now()) / 1000 / 60);
+                const lockoutWarning = document.getElementById('lockoutWarning');
+                const lockoutMessage = document.getElementById('lockoutMessage');
+                const loginButton = document.getElementById('loginButton');
+                const loginForm = document.getElementById('loginForm');
+                
+                lockoutMessage.textContent = `Too many failed attempts. Account locked for ${remainingTime} minutes.`;
+                lockoutWarning.style.display = 'block';
+                loginButton.disabled = true;
+                loginForm.style.opacity = '0.5';
+                loginForm.style.pointerEvents = 'none';
+            }
+            
+            // Display login attempts
+            const loginAttempts = localStorage.getItem('loginAttempts');
+            const loginAttemptsDisplay = document.getElementById('loginAttemptsDisplay');
+            if (loginAttempts && parseInt(loginAttempts) > 0) {
+                loginAttemptsDisplay.innerHTML = `<i class="fas fa-shield-alt"></i> ${3 - parseInt(loginAttempts)} attempt(s) remaining`;
+            }
+        });
+    </script>
+</body>
+</html>

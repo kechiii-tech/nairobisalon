@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Nairobi Premier Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-bronze);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+        }
+        
+        .whatsapp-icon {
+            background: #25D366;
+        }
+        
+        .phone-icon {
+            background: var(--primary-blue);
+        }
+        
+        .email-icon {
+            background: var(--secondary-red);
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .contact-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--light-gray);
+            color: var(--neutral-gray);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            background: var(--primary-bronze);
+            color: white;
+        }
+        
+        .location-section {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.05) 0%, rgba(28, 144, 255, 0.05) 100%);
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .location-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .location-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-bronze);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .location-info {
+            flex: 1;
+        }
+        
+        .location-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .location-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .location-features i {
+            color: var(--primary-bronze);
+            width: 20px;
+        }
+        
+        .contact-form-section {
+            padding: 80px 0;
+        }
+        
+        .contact-form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .contact-info-sidebar {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-details-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .contact-details-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-details-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-details-list i {
+            color: var(--primary-bronze);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .social-media-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .social-media-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-media-links a:hover {
+            background: var(--primary-bronze);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .map-container {
+            margin-top: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        
+        .emergency-contact {
+            background: var(--neutral-gray);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .emergency-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 2px solid var(--primary-bronze);
+        }
+        
+        .emergency-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .emergency-number:hover {
+            color: var(--secondary-gold);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-form-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .emergency-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Nairobi<span>Premier</span></div>
+            </div>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+                </ul>
+            </nav>
+            
+            <a href="tel:+254117702463" class="btn btn-primary">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Nairobi Premier Salon</h1>
+            <p>Get in touch with us through multiple channels. We're here to help with all your beauty and grooming needs.</p>
+            
+            <div class="contact-options">
+                <a href="https://wa.me/254117702463" class="contact-option" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp: +254 117 702463</span>
+                </a>
+                
+                <a href="tel:+254117702463" class="contact-option">
+                    <i class="fas fa-phone"></i>
+                    <span>Call: +254 117 702463</span>
+                </a>
+                
+                <a href="mailto:info@nairobipremiersalon.com" class="contact-option">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email Us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Methods</h2>
+                <p>Choose your preferred way to get in touch with us</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon whatsapp-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Fastest response during business hours. Send us a message for bookings, inquiries, or support.</p>
+                    <a href="https://wa.me/254117702463?text=Hello%20Nairobi%20Premier%20Salon!%20I%20have%20a%20question." 
+                       class="contact-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon phone-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone Call</h3>
+                    <p>Speak directly with our reception team for immediate assistance and booking confirmations.</p>
+                    <a href="tel:+254117702463" class="contact-link">
+                        <i class="fas fa-phone"></i> Call +254 117 702463
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>For detailed inquiries, partnerships, or feedback. We respond within 2 business hours.</p>
+                    <a href="mailto:info@nairobipremiersalon.com?subject=Inquiry%20from%20Website&body=Hello%2C%20I%20would%20like%20to%20inquire%20about..." 
+                       class="contact-link">
+                        <i class="fas fa-envelope"></i> Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="section-padding location-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Salon Locations</h2>
+                <p>Visit us at any of our four convenient locations across Nairobi</p>
+            </div>
+            
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="location-info">
+                            <h3>Westlands Salon</h3>
+                            <p style="color: #666;">ABC Place, 3rd Floor</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="location-features">
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span><strong>Hours:</strong> Mon-Sat 9AM-8PM, Sun 10AM-6PM</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> +254 117 702463</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-parking"></i>
+                            <span><strong>Parking:</strong> Secure basement parking available</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-wifi"></i>
+                            <span><strong>Amenities:</strong> Free Wi-Fi, refreshments</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://maps.google.com/?q=ABC+Place+Westlands+Nairobi" 
+                       class="btn btn-secondary" style="width: 100%;" target="_blank">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="location-info">
+                            <h3>Kilimani Salon</h3>
+                            <p style="color: #666;">Dennis Pritt Road</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="location-features">
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span><strong>Hours:</strong> Mon-Sat 9AM-8PM, Sun 10AM-6PM</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> +254 117 702463</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-parking"></i>
+                            <span><strong>Parking:</strong> Street parking available</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-users"></i>
+                            <span><strong>Specialty:</strong> Bridal & event styling</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://maps.google.com/?q=Dennis+Pritt+Road+Kilimani+Nairobi" 
+                       class="btn btn-secondary" style="width: 100%;" target="_blank">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="location-info">
+                            <h3>Karen Salon</h3>
+                            <p style="color: #666;">Karen Crossroads Mall</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="location-features">
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span><strong>Hours:</strong> Mon-Sat 8AM-7PM, Sun 10AM-5PM</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> +254 117 702463</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-parking"></i>
+                            <span><strong>Parking:</strong> Ample mall parking</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-spa"></i>
+                            <span><strong>Specialty:</strong> Spa & wellness treatments</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://maps.google.com/?q=Karen+Crossroads+Mall+Nairobi" 
+                       class="btn btn-secondary" style="width: 100%;" target="_blank">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="location-info">
+                            <h3>CBD Salon</h3>
+                            <p style="color: #666;">Kimathi Street, 5th Floor</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="location-features">
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span><strong>Hours:</strong> Mon-Fri 8AM-7PM, Sat 9AM-5PM</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> +254 117 702463</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-subway"></i>
+                            <span><strong>Access:</strong> Near CBD matatu termini</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-briefcase"></i>
+                            <span><strong>Specialty:</strong> Corporate grooming</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://maps.google.com/?q=Kimathi+Street+Nairobi+CBD" 
+                       class="btn btn-secondary" style="width: 100%;" target="_blank">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible</p>
+            </div>
+            
+            <div class="contact-form-container">
+                <div class="contact-form">
+                    <form id="contactForm" style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);">
+                        <div class="form-group">
+                            <label for="contactName">Full Name *</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number *</label>
+                            <input type="tel" class="form-control" id="contactPhone" placeholder="e.g., 0711 7702463" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address *</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject">Subject *</label>
+                            <select class="form-control" id="contactSubject" required>
+                                <option value="">Select a subject</option>
+                                <option value="booking">Booking Inquiry</option>
+                                <option value="pricing">Pricing Question</option>
+                                <option value="service">Service Information</option>
+                                <option value="feedback">Feedback & Reviews</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="career">Career Opportunity</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Message *</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" required> I agree to the privacy policy
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-sidebar">
+                    <h3>Contact Information</h3>
+                    
+                    <ul class="contact-details-list">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone Number</strong>
+                                <p><a href="tel:+254117702463">+254 117 702463</a></p>
+                                <small>Available 7 days a week</small>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <p><a href="https://wa.me/254117702463">+254 117 702463</a></p>
+                                <small>Fast responses during business hours</small>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email Address</strong>
+                                <p><a href="mailto:info@nairobipremiersalon.com">info@nairobipremiersalon.com</a></p>
+                                <small>Response within 2 business hours</small>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Business Hours</strong>
+                                <p>Monday - Friday: 9:00 AM - 8:00 PM</p>
+                                <p>Saturday: 8:00 AM - 7:00 PM</p>
+                                <p>Sunday: 10:00 AM - 6:00 PM</p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Head Office</strong>
+                                <p>ABC Place, 3rd Floor, Westlands</p>
+                                <p>Nairobi, Kenya</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="social-media-links">
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/254117702463" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8477266259915!2d36.80756727498109!3d-1.2655702987279667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1739c3e56c6d%3A0x5e52e5f4c7a5b9c7!2sABC%20Place%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" 
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact -->
+    <section class="emergency-contact">
+        <div class="container">
+            <div class="emergency-box">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--secondary-gold); margin-bottom: 20px;"></i>
+                <h2 style="color: white;">Emergency Contact</h2>
+                <p>Need immediate assistance with a booking or have an urgent inquiry?</p>
+                
+                <a href="tel:+254117702463" class="emergency-number">
+                    <i class="fas fa-phone"></i> +254 117 702463
+                </a>
+                
+                <p style="margin: 20px 0;">Available for urgent matters even outside regular business hours.</p>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:+254117702463" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/254117702463?text=URGENT%3A%20I%20need%20immediate%20assistance" 
+                       class="btn" style="background: #25D366; color: white;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Emergency
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Nairobi Premier Salon</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Luxury beauty experiences in the heart of Kenya's capital. Where tradition meets modern elegance.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/254117702463" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Locations</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Westlands: ABC Place</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Kilimani: Dennis Pritt Road</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Karen: Karen Crossroads</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> CBD: Kimathi Street</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services & Pricing</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="booking.html">Book Appointment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone" style="margin-right: 8px; color: var(--primary-bronze);"></i> +254 117 702463</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 8px; color: var(--primary-bronze);"></i> info@nairobipremiersalon.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 8px; color: var(--primary-bronze);"></i> Mon-Sat: 9AM - 8PM, Sun: 10AM - 6PM</li>
+                        <li><i class="fab fa-whatsapp" style="margin-right: 8px; color: var(--primary-bronze);"></i> WhatsApp: +254 117 702463</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Nairobi Premier Salon. All rights reserved. | Designed by project skydaddys for Nairobi's Beauty Enthusiasts</p>
+                <p style="margin-top: 10px;">
+                    Emergency: <a href="tel:+254117702463" style="color: var(--primary-bronze);">+254 117 702463</a> | 
+                    WhatsApp: <a href="https://wa.me/254117702463" style="color: #25D366;" target="_blank">+254 117 702463</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="contactSuccessModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Message Sent Successfully!</h3>
+                <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="width: 80px; height: 80px; background: #d4edda; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-check" style="font-size: 2.5rem; color: #28a745;"></i>
+                    </div>
+                    <h4>Thank you for contacting us!</h4>
+                    <p>We have received your message and will respond within 2 business hours.</p>
+                    
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: left;">
+                        <p><strong>For immediate assistance:</strong></p>
+                        <ul style="padding-left: 20px; margin: 10px 0;">
+                            <li>Call: <a href="tel:+254117702463">+254 117 702463</a></li>
+                            <li>WhatsApp: <a href="https://wa.me/254117702463" target="_blank">+254 117 702463</a></li>
+                        </ul>
+                    </div>
+                    
+                    <p>We look forward to serving you!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeContactModal()">Close</button>
+                <a href="https://wa.me/254117702463" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize contact page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const formData = {
+                        name: document.getElementById('contactName').value,
+                        phone: document.getElementById('contactPhone').value,
+                        email: document.getElementById('contactEmail').value,
+                        subject: document.getElementById('contactSubject').value,
+                        subjectText: document.getElementById('contactSubject').options[document.getElementById('contactSubject').selectedIndex].text,
+                        message: document.getElementById('contactMessage').value,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    // Validate phone number
+                    const phoneRegex = /^(?:254|\+254|0)?(7[0-9]{8})$/;
+                    const cleanPhone = formData.phone.replace(/\s/g, '');
+                    
+                    if (!phoneRegex.test(cleanPhone)) {
+                        alert('Please enter a valid Kenyan phone number (e.g., 0711 7702463)');
+                        return;
+                    }
+                    
+                    // Validate email
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(formData.email)) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+                    
+                    // Save contact message to localStorage
+                    saveContactMessage(formData);
+                    
+                    // Prepare WhatsApp message for salon
+                    const whatsappMessage = `New Contact Form Submission%0A%0A` +
+                                           `Name: ${formData.name}%0A` +
+                                           `Phone: ${formData.phone}%0A` +
+                                           `Email: ${formData.email}%0A` +
+                                           `Subject: ${formData.subjectText}%0A` +
+                                           `Message: ${formData.message}`;
+                    
+                    // Show success modal
+                    showContactSuccessModal();
+                    
+                    // Optionally send WhatsApp notification to salon
+                    // Uncomment the line below to enable auto WhatsApp notification
+                    // window.open(`https://wa.me/254117702463?text=${whatsappMessage}`, '_blank');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+            
+            // Modal functions
+            window.closeContactModal = function() {
+                document.getElementById('contactSuccessModal').style.display = 'none';
+            };
+            
+            window.showContactSuccessModal = function() {
+                document.getElementById('contactSuccessModal').style.display = 'flex';
+            };
+            
+            // Close modal when clicking outside
+            document.getElementById('contactSuccessModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeContactModal();
+                }
+            });
+        });
+        
+        // Save contact message to localStorage
+        function saveContactMessage(contactData) {
+            let messages = JSON.parse(localStorage.getItem('salonContacts')) || [];
+            contactData.id = 'CT' + Date.now().toString().slice(-6);
+            messages.push(contactData);
+            localStorage.setItem('salonContacts', JSON.stringify(messages));
+            
+            console.log('Contact message saved:', contactData);
+        }
+        
+        // Format phone number for display
+        function formatPhoneNumber(phone) {
+            // Remove all non-digits
+            const cleaned = phone.replace(/\D/g, '');
+            
+            // Check if the number starts with country code
+            if (cleaned.startsWith('254')) {
+                return `+${cleaned.substring(0, 3)} ${cleaned.substring(3, 6)} ${cleaned.substring(6)}`;
+            } else if (cleaned.startsWith('0')) {
+                return `+254 ${cleaned.substring(1, 4)} ${cleaned.substring(4)}`;
+            } else {
+                return phone;
+            }
+        }
+        
+        // Initialize phone formatting for display
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            const phone = link.getAttribute('href').replace('tel:', '');
+            if (phone) {
+                link.textContent = formatPhoneNumber(phone);
+            }
+        });
+    </script>
+</body>
+</html>

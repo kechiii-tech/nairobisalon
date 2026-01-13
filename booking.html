@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Nairobi Premier Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .booking-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .booking-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .booking-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .contact-option:hover {
+            background: rgba(205, 127, 50, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .contact-option i {
+            font-size: 1.2rem;
+        }
+        
+        .booking-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .booking-step {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-bronze);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .booking-form-section {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.05) 0%, rgba(28, 144, 255, 0.05) 100%);
+        }
+        
+        .whatsapp-booking {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .whatsapp-booking .btn {
+            background: #25D366;
+            margin-top: 20px;
+        }
+        
+        .whatsapp-booking .btn:hover {
+            background: #128C7E;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Nairobi<span>Premier</span></div>
+            </div>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="booking.html" class="active">Book Now</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin-login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+                </ul>
+            </nav>
+            
+            <a href="tel:+254117702463" class="btn btn-primary">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Booking Hero -->
+    <section class="booking-hero">
+        <div class="container">
+            <h1>Book Your Beauty Appointment</h1>
+            <p>Schedule your visit to Nairobi's premier salon. Choose from multiple booking methods for your convenience.</p>
+            
+            <div class="contact-options">
+                <a href="https://wa.me/254117702463?text=Hello!%20I'd%20like%20to%20book%20an%20appointment%20at%20Nairobi%20Premier%20Salon" 
+                   class="contact-option" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Book via WhatsApp</span>
+                </a>
+                
+                <a href="tel:+254117702463" class="contact-option">
+                    <i class="fas fa-phone"></i>
+                    <span>Call: +254 117 702463</span>
+                </a>
+                
+                <a href="#booking-form" class="contact-option">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Online Booking Form</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Steps -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Book</h2>
+                <p>Simple steps to secure your appointment</p>
+            </div>
+            
+            <div class="booking-steps">
+                <div class="booking-step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Method</h3>
+                    <p>Book online, via WhatsApp, or call us directly at +254 117 702463</p>
+                </div>
+                
+                <div class="booking-step">
+                    <div class="step-number">2</div>
+                    <h3>Select Service</h3>
+                    <p>Choose from our wide range of hair, nail, spa, and beauty services</p>
+                </div>
+                
+                <div class="booking-step">
+                    <div class="step-number">3</div>
+                    <h3>Pick Date & Time</h3>
+                    <p>Select your preferred date and time slot that works for you</p>
+                </div>
+                
+                <div class="booking-step">
+                    <div class="step-number">4</div>
+                    <h3>Confirmation</h3>
+                    <p>Receive instant confirmation via SMS and WhatsApp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Booking Form -->
+    <section class="section-padding booking-form-section" id="booking-form">
+        <div class="container">
+            <div class="section-title">
+                <h2>Online Booking Form</h2>
+                <p>Fill out the form below to book your appointment</p>
+            </div>
+            
+            <div class="booking-container">
+                <div class="booking-form">
+                    <h3 style="margin-bottom: 25px;">Book Your Appointment</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="service">Select Service *</label>
+                            <select class="form-control" id="service" required>
+                                <option value="">Choose a service</option>
+                                <option value="braiding">Braiding & Weaving - KES 2,500+</option>
+                                <option value="haircut">Haircut & Styling - KES 1,800+</option>
+                                <option value="manicure">Manicure & Pedicure - KES 1,200+</option>
+                                <option value="facial">Facial Treatment - KES 3,500+</option>
+                                <option value="massage">Spa Massage - KES 4,000+</option>
+                                <option value="bridal">Bridal Package - KES 15,000+</option>
+                                <option value="coloring">Hair Coloring - KES 3,000+</option>
+                                <option value="weaving">Weaving Installation - KES 3,500+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Preferred Date *</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">Preferred Time *</label>
+                            <select class="form-control" id="time" required>
+                                <option value="">Select time</option>
+                                <option value="9:00">9:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:30">3:30 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="18:30">6:30 PM (Evening Slot)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="e.g., 0711 7702463" required>
+                            <small style="color: #666; font-size: 0.9rem;">We'll contact you on this number</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email (optional)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Preferred Location *</label>
+                            <select class="form-control" id="location" required>
+                                <option value="">Select branch</option>
+                                <option value="westlands">Westlands Salon (ABC Place)</option>
+                                <option value="kilimani">Kilimani Salon (Dennis Pritt Road)</option>
+                                <option value="karen">Karen Salon (Karen Crossroads)</option>
+                                <option value="cbd">Nairobi CBD (Kimathi Street)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or requirements..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" required> I agree to the terms and conditions
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                            <i class="fas fa-calendar-check"></i> Submit Booking Request
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 30px;">Why Book With Us</h3>
+                    <div class="booking-features">
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <h3>Flexible Hours</h3>
+                            <p>Open 7 days a week, including evenings</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Safe & Sanitized</h3>
+                            <p>Highest hygiene standards maintained</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h3>M-Pesa Ready</h3>
+                            <p>Pay via M-Pesa for convenience</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <h3>Expert Stylists</h3>
+                            <p>Trained professionals for best results</p>
+                        </div>
+                    </div>
+                    
+                    <div class="whatsapp-booking">
+                        <h3><i class="fab fa-whatsapp" style="color: #25D366;"></i> Prefer WhatsApp?</h3>
+                        <p>Book directly via WhatsApp for instant response</p>
+                        <a href="https://wa.me/254117702463?text=Hello!%20I'd%20like%20to%20book%20an%20appointment%20at%20Nairobi%20Premier%20Salon.%20My%20name%20is%20[Your%20Name]%20and%20I'm%20interested%20in%20[Service%20Type]" 
+                           class="btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 40px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                        <h4 style="color: var(--primary-bronze); margin-bottom: 15px;"><i class="fas fa-clock"></i> Operating Hours</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <span style="display: inline-block; width: 100px;">Monday - Friday</span>
+                                <strong>9:00 AM - 8:00 PM</strong>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <span style="display: inline-block; width: 100px;">Saturday</span>
+                                <strong>8:00 AM - 7:00 PM</strong>
+                            </li>
+                            <li style="padding: 8px 0;">
+                                <span style="display: inline-block; width: 100px;">Sunday</span>
+                                <strong>10:00 AM - 6:00 PM</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact -->
+    <section class="section-padding" style="background: var(--neutral-gray); color: white;">
+        <div class="container">
+            <div class="section-title" style="color: white;">
+                <h2 style="color: white;">Need Immediate Assistance?</h2>
+                <p>Contact us directly for urgent bookings or inquiries</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center;">
+                <div>
+                    <div style="font-size: 3rem; color: var(--primary-bronze); margin-bottom: 20px;">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us Now</h3>
+                    <p style="font-size: 1.5rem; font-weight: bold; margin: 15px 0;">
+                        <a href="tel:+254117702463" style="color: white; text-decoration: none;">+254 117 702463</a>
+                    </p>
+                    <p>Available 7 days a week</p>
+                </div>
+                
+                <div>
+                    <div style="font-size: 3rem; color: #25D366; margin-bottom: 20px;">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Booking</h3>
+                    <p style="margin: 15px 0;">
+                        <a href="https://wa.me/254117702463" class="btn" 
+                           style="background: #25D366; color: white; text-decoration: none;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
+                        </a>
+                    </p>
+                    <p>Instant responses during business hours</p>
+                </div>
+                
+                <div>
+                    <div style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 20px;">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p style="font-size: 1.2rem; margin: 15px 0;">
+                        <a href="mailto:booking@nairobipremiersalon.com" style="color: white; text-decoration: none;">
+                            booking@nairobipremiersalon.com
+                        </a>
+                    </p>
+                    <p>Response within 2 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Nairobi Premier Salon</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Luxury beauty experiences in the heart of Kenya's capital. Where tradition meets modern elegance.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/254117702463" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Locations</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Westlands: ABC Place</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Kilimani: Dennis Pritt Road</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> Karen: Karen Crossroads</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--primary-bronze);"></i> CBD: Kimathi Street</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services & Pricing</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="booking.html">Book Appointment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone" style="margin-right: 8px; color: var(--primary-bronze);"></i> +254 117 702463</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 8px; color: var(--primary-bronze);"></i> info@nairobipremiersalon.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 8px; color: var(--primary-bronze);"></i> Mon-Sat: 9AM - 8PM, Sun: 10AM - 6PM</li>
+                        <li><i class="fab fa-whatsapp" style="margin-right: 8px; color: var(--primary-bronze);"></i> WhatsApp: +254 117 702463</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Nairobi Premier Salon. All rights reserved. | Designed for Nairobi's Beauty Enthusiasts</p>
+                <p style="margin-top: 10px;">Proudly serving Nairobi since 2015 | Emergency: <a href="tel:+254117702463" style="color: var(--primary-bronze);">+254 117 702463</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Booking Submitted Successfully!</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="width: 80px; height: 80px; background: #d4edda; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-check" style="font-size: 2.5rem; color: #28a745;"></i>
+                    </div>
+                    <h4>Thank you for your booking!</h4>
+                    <p>We have received your appointment request and will contact you within 30 minutes to confirm.</p>
+                    
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: left;">
+                        <p><strong>Next Steps:</strong></p>
+                        <ol style="padding-left: 20px; margin: 10px 0;">
+                            <li>We'll call/SMS you on the number provided</li>
+                            <li>You can pay via M-Pesa or at the salon</li>
+                            <li>Arrive 10 minutes before your appointment</li>
+                        </ol>
+                    </div>
+                    
+                    <p>Need immediate assistance? <br>
+                    <a href="tel:+254117702463" style="color: var(--primary-blue);">Call: +254 117 702463</a></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <a href="https://wa.me/254117702463" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+    <script>
+        // Initialize booking page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+            
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.value = tomorrow.toISOString().split('T')[0];
+            
+            // Initialize booking form
+            const bookingForm = document.getElementById('bookingForm');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const formData = {
+                        service: document.getElementById('service').value,
+                        serviceText: document.getElementById('service').options[document.getElementById('service').selectedIndex].text,
+                        date: document.getElementById('date').value,
+                        time: document.getElementById('time').value,
+                        name: document.getElementById('name').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value,
+                        location: document.getElementById('location').value,
+                        locationText: document.getElementById('location').options[document.getElementById('location').selectedIndex].text,
+                        notes: document.getElementById('notes').value,
+                        timestamp: new Date().toISOString(),
+                        status: 'pending',
+                        id: 'BK' + Date.now().toString().slice(-6)
+                    };
+                    
+                    // Validate phone number (Kenyan format)
+                    const phoneRegex = /^(?:254|\+254|0)?(7[0-9]{8})$/;
+                    const cleanPhone = formData.phone.replace(/\s/g, '');
+                    
+                    if (!phoneRegex.test(cleanPhone)) {
+                        alert('Please enter a valid Kenyan phone number (e.g., 0711 7702463)');
+                        return;
+                    }
+                    
+                    // Format phone number
+                    let formattedPhone = cleanPhone;
+                    if (formattedPhone.startsWith('0')) {
+                        formattedPhone = '254' + formattedPhone.substring(1);
+                    } else if (formattedPhone.startsWith('+254')) {
+                        formattedPhone = formattedPhone.substring(1);
+                    } else if (!formattedPhone.startsWith('254')) {
+                        formattedPhone = '254' + formattedPhone;
+                    }
+                    
+                    // Save to localStorage
+                    saveBooking(formData);
+                    
+                    // Prepare WhatsApp message
+                    const whatsappMessage = `New Booking Request from ${formData.name}%0A%0A` +
+                                           `Service: ${formData.serviceText}%0A` +
+                                           `Date: ${formData.date}%0A` +
+                                           `Time: ${formData.time}%0A` +
+                                           `Location: ${formData.locationText}%0A` +
+                                           `Phone: ${formData.phone}%0A` +
+                                           `Email: ${formData.email || 'Not provided'}%0A` +
+                                           `Notes: ${formData.notes || 'None'}`;
+                    
+                    // Show success modal
+                    showSuccessModal();
+                    
+                    // Optionally send WhatsApp notification to salon
+                    // Uncomment the line below to enable auto WhatsApp notification
+                    // window.open(`https://wa.me/254117702463?text=${whatsappMessage}`, '_blank');
+                    
+                    // Reset form
+                    bookingForm.reset();
+                    
+                    // Reset date to tomorrow
+                    const newTomorrow = new Date();
+                    newTomorrow.setDate(newTomorrow.getDate() + 1);
+                    dateInput.value = newTomorrow.toISOString().split('T')[0];
+                });
+            }
+            
+            // Initialize modal functionality
+            window.closeModal = function() {
+                document.getElementById('successModal').style.display = 'none';
+            };
+            
+            window.showSuccessModal = function() {
+                document.getElementById('successModal').style.display = 'flex';
+            };
+            
+            // Close modal when clicking outside
+            document.getElementById('successModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        });
+        
+        // Save booking to localStorage
+        function saveBooking(bookingData) {
+            let bookings = JSON.parse(localStorage.getItem('salonBookings')) || [];
+            bookings.push(bookingData);
+            localStorage.setItem('salonBookings', JSON.stringify(bookings));
+            
+            // Store for admin
+            sessionStorage.setItem('latestBooking', JSON.stringify(bookingData));
+            
+            console.log('Booking saved:', bookingData);
+        }
+        
+        // Time slot generator based on day
+        function generateTimeSlots() {
+            const dateInput = document.getElementById('date');
+            const timeSelect = document.getElementById('time');
+            const selectedDate = new Date(dateInput.value);
+            const dayOfWeek = selectedDate.getDay();
+            
+            // Clear existing options except the first
+            while (timeSelect.options.length > 1) {
+                timeSelect.remove(1);
+            }
+            
+            // Define time slots based on day
+            let timeSlots;
+            if (dayOfWeek === 0) { // Sunday
+                timeSlots = ['10:00', '11:30', '13:00', '14:30', '16:00'];
+            } else if (dayOfWeek === 6) { // Saturday
+                timeSlots = ['9:00', '10:30', '12:00', '13:30', '15:00', '16:30'];
+            } else { // Weekdays
+                timeSlots = ['9:00', '10:30', '12:00', '14:00', '15:30', '17:00', '18:30'];
+            }
+            
+            // Add time slots
+            timeSlots.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                
+                // Convert to 12-hour format for display
+                const [hours, minutes] = time.split(':');
+                const hour = parseInt(hours);
+                const ampm = hour >= 12 ? 'PM' : 'AM';
+                const displayHour = hour % 12 || 12;
+                option.textContent = `${displayHour}:${minutes} ${ampm}`;
+                
+                timeSelect.appendChild(option);
+            });
+        }
+        
+        // Update time slots when date changes
+        document.getElementById('date').addEventListener('change', generateTimeSlots);
+        
+        // Initialize time slots on page load
+        generateTimeSlots();
+    </script>
+</body>
+</html>

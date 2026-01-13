@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Nairobi Premier Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Admin Sidebar -->
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-text">Nairobi<span>Premier</span></div>
+                </div>
+                <p class="admin-role">Administrator</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#bookings"><i class="fas fa-calendar-check"></i> Bookings <span class="badge" id="pendingCount">0</span></a></li>
+                    <li><a href="#clients"><i class="fas fa-users"></i> Clients</a></li>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li><a href="#staff"><i class="fas fa-user-tie"></i> Staff Management</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> View Site</a>
+                <button class="btn btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage salon operations and client bookings</p>
+                </div>
+                <div class="header-right">
+                    <div class="admin-search">
+                        <input type="text" placeholder="Search bookings, clients...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="admin-notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Stats Cards -->
+            <div class="stats-cards" id="statsCards">
+                <!-- Stats loaded via JavaScript -->
+            </div>
+            
+            <!-- Recent Bookings -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>Recent Bookings</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="refreshBookings()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                        <button class="btn btn-secondary" onclick="exportBookings()"><i class="fas fa-download"></i> Export</button>
+                    </div>
+                </div>
+                
+                <div class="bookings-table-container">
+                    <table class="bookings-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Service</th>
+                                <th>Date & Time</th>
+                                <th>Location</th>
+                                <th>Contact</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableBody">
+                            <!-- Bookings loaded via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-pagination">
+                    <button class="pagination-btn" id="prevPage"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <span class="page-info">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
+                    <button class="pagination-btn" id="nextPage">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="admin-section">
+                <h2>Quick Actions</h2>
+                <div class="quick-actions">
+                    <div class="action-card" onclick="addNewService()">
+                        <i class="fas fa-plus-circle"></i>
+                        <h3>Add New Service</h3>
+                        <p>Create a new salon service</p>
+                    </div>
+                    <div class="action-card" onclick="sendBroadcast()">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Send Broadcast</h3>
+                        <p>Message all clients</p>
+                    </div>
+                    <div class="action-card" onclick="generateReport()">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Generate Report</h3>
+                        <p>Monthly performance report</p>
+                    </div>
+                    <div class="action-card" onclick="manageStaff()">
+                        <i class="fas fa-user-plus"></i>
+                        <h3>Add Staff</h3>
+                        <p>Hire new salon staff</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="admin-section">
+                <h2>Recent Activity</h2>
+                <div class="activity-feed" id="activityFeed">
+                    <!-- Activity loaded via JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Booking Details Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Booking Details</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="bookingDetails">
+                <!-- Booking details loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+                <button class="btn btn-danger" onclick="cancelBooking()">Cancel Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
